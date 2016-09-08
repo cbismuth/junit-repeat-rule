@@ -1,1 +1,6 @@
 language: java
+
+jdk:
+  - openjdk6
+
+script: "mvn clean install javadoc:jar"
