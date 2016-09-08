@@ -11,10 +11,13 @@ A simple JUnit repeat rule written in Java 5+ along with concurrency support.
 ## Usage
 
 ```java
+/** A test class containing a repeated test case. */
 public class RepeatedTest {
+    /** The rule to enable test repetition. */
     @Rule
     public RepeatRule rule = new RepeatRule();
     
+    /** A repeated test case. */
     @Test
     @Repeat(times = 3, threads = 4)
     public void testRepetition() {

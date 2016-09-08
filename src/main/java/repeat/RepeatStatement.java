@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
+/** This class represents the core implementation of the JUnit repetition rule. */
 public class RepeatStatement extends Statement {
 
     private final int times;
@@ -17,6 +18,15 @@ public class RepeatStatement extends Statement {
 
     private final Statement statement;
 
+    /**
+     * Constructs a new repeat statement instance.
+     *
+     * @param times the number of times to repeat a test
+     * @param threads the number of threads the execute a test in parallel
+     * @param timeout the timeout after with the executor service will be forced to shutdown
+     * @param unit the timeout time unit
+     * @param statement the statement to repeat
+     */
     public RepeatStatement(final int times,
                            final int threads, final long timeout, final TimeUnit unit,
                            final Statement statement) {
@@ -38,8 +48,8 @@ public class RepeatStatement extends Statement {
                 public void run() {
                     try {
                         statement.evaluate();
-                    } catch (Throwable throwable) {
-                        throw new RuntimeException(throwable);
+                    } catch (final Throwable t) {
+                        throw new RuntimeException(t);
                     }
                 }
             });
