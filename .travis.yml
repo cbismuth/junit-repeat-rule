@@ -1,26 +1,16 @@
 language: java
-jdk:
-  - openjdk6
-install:
-  - mvn --settings deployment/maven/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-before_install:
-  - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
-  - echo $GPG_OWNERTRUST  | base64 --decode | gpg --import-ownertrust
+jdk: openjdk6
 cache:
   directories:
-  - "~/.m2/repository"
-deploy:
-  -
-    provider: script
-    script: deployment/scripts/deploy.sh
-    on:
-      repo: cbismuth/junit-repeat-rule
-      branch: master
-      jdk: openjdk6
-  -
-    provider: script
-    script: deployment/scripts/deploy.sh
-    on:
-      repo: cbismuth/junit-repeat-rule
-      tags: true
-      jdk: openjdk6
+    - "$HOME/.m2"
+after_success:
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $GPG_DIR/pubring.gpg.enc -out $GPG_DIR/pubring.gpg -d
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $GPG_DIR/secring.gpg.enc -out $GPG_DIR/secring.gpg -d
+  - "$GPG_DIR/publish.sh"
+env:
+  global:
+  - GPG_DIR="`pwd`/deploy"
+  - secure: Q7o79g429xEuwm2ilqUtoMSWRTnM3YZupb/HU0lj0YW50/b76nre5BfDh480JK1UtpcTu0EYpumCJ/9z6td3g2/Lz4cft4dCSm57vv5ySOBUzntlqXQMt2Ep5VCYseBlNJ+GIyNUdfJpW1Pka+1TMTwrBnykDTxFEmWScDWUKeNU1qV5tRYX3f8KrKA80jEdaasKAkl9pih/EwX/noJs8xUHXcGMLL12CYRW3kbCf84RWdBU9GnFFhX7yv6mvg11hZBd2XQijkJKEasJQnLcdaLcOo00KQo0XPvq0EpZlrSIL93Fl0fQpMxXPiuPWeg2mr7ED5Ntqrkt8JJSnYex33EAduo+DcvmTwxNaOaVmluCctr8YFsbEkj7tMskZdULockG3a6FQgbdZ66PAcSGxp/m5CvtLB6Y3Wn/8PhjNNXflEkAdUlousCppUKV5bx0M/Z6UE6Wg64BRjTUPcQ2gcGFSVet6qI7yWeC8KarOjQyerQnEZkVbbPUiu1k8/P/8iymLnBlXr30k9apHHErysCdxlhpLTwOYvZplyk8aFUDPRyeRFdJSiqo8JhZ1IYL009yQKj92BPNBeXkxuni0b+YcbunT3baV0nN5I5VF+yzVq3rRvn5h/QjLYdXcofq4DZCcWI/dxSAHPMpTvdMCI7Ct7r1b6QKYz/iGgAe0XQ=
+  - secure: k3CSIg9fYOiqao9GHJjFBmx+WjG3Ana4CkjTI92kRu6hs0E2IEeNklRkpEJanUShKQqQQ+wPzGDYO1F4BpzNhPRkF0/mBOjLQM0DItk336gIaBO6GIu8p7lZxlbZnlMnXUhS9aPvO6T2YSk8C0hZV86uI4QcK88/B+of7HJ9examGEvWOaURu+4r8OIn7gCh5dLX8oyMvgdLGGFI3YrWMOKMyqmz4ZxZH7WMmUZGKdYOVaXFj+QZwU4NjKr7fZkjTckFK9iz88pl79EMTGx5GHE317HjwbB/+CXA58oi7A0K1xWEzue8CiwyokypmqubEeO/N2tS/U0DuYkDvr9/xcIHykDWoQsk1CQcHc1oKSe6aIaYpq1PRlklB68/pRPOC3BhE+kf2mHUf11eOvVDM+7VII/ejI6OvJ2pdvEasY071lOj6g0stmlhOCVF4LiCxNU7y6/cHQ+25WOLGXyvO/SSeYmx4n11TH8yAr7u4t3MtwSl1Qd9TNe0LFiDBv3m1KjKRT9QeuvhJROH1TBn7XTGZIqUqnOcydfkfpCecUMGH4QrSCiRuJwl15OzYJUqCY552hP84W8hH0NgOLaVK1OGm4r1empA3aUfl9uDtcv+LG8zrB8/vzx0WrB64IxGM6aADQbV2nA7FSSMgIFquQ3AzTMcRmfF8MuN4LHBXaM=
+  - secure: GuswnL7YszHBphR+PnXc+QJW1Um5IEXceoIVkkoVWETzohtNxyzbNbmvAhj2fYeS9iI2QHClKFrca3b9v2YZx+u6zsqH0WAVSMVDmvLTz9cBCV6y1EuzbEop/ZLPfcT7W4THpTfAMbcOyACIykCvKB/Sfsx+LvqcH7ybTYil1ao3qgi8itArw8aVXWS9pZpE4IuiNWWnZfCc8LhUJpCTxlEQUUtUmfnaRszVNVSj+Id5Ce8CtebafiH0ojWFIXVHw3VdGDk4qwPbJIagrBl5I5E/iO43nm+q6JBcM/AUsVqj+WSFZcIlmKCXIoioDKrOiGMYrvl6pcOwBLwfUNpot+zCdS2msyfdT7aGPKgY46Y0BLK1/klhiQ2u3dakSj+NQtY95Mm+uKznJmbNLuWW+pFqFm89886KIUREEBBwSD+/hDJxirxtRED4VtDiSchoFEP77WCq2YMwufEl7iwzTrUulrlMA3AqT75DKhcH0ePhIA64XgHVFC1mADAtfTVCCQRwY9L0BCerWmUeDor6xw7GGWP2GNc1Dn4+61xwd1ygVc+iw8wUoCeOyWg/jw+qFMj1oAKsF4YUMj3NNqkmeKDEQfAePawb2vZMfcuFXbd27h/9F7iTPOfw0mUFqDUBm3AJ+jyf+fDtujHvfD2VDi/Y4XaGxPqyu1lsD+Ld5EE=
+  - secure: vXvGgGJACz/J5rUFyZuRJ9kGMPcgpfel8gaq/7IkNj4cUYE+cIcl1wNY0UH6FElRvrXIL3t/twY6rYSHyIfwpm/J/l/N3Wj5YOWScRrCq2K5HIpNSNztoRcz+zg6Y6X/bbnAwzxyC5e1uLhNuqBZUzNuT6RA2bFcb2VjcRelMp9ao8zWVI1K9UiP6IjuHk69Cu3nqDVNp+Zndv7dHWrxFjoDM8BuhDSBaVggbRoq78khnofoaeXtG0+qp1ibvH7PL2S/JHtLOkfpBYMMG4Zss+kB/pQhNH4wJQK9rcDOw81sjEMoMQ91ml+rYeve0ORu9Kmv+Adp7qONXAYlVbJ/Q1qR1eqoJG4FPGQC5ZDeh1VqDFIU/COtpRsRal6yGjA9FJcZQOO7OnqjFDNWIk1rNzHu7klDI/f+ZBUmUhGtiytm6mPfbJu6VZgrm9axdbP7HtIdVfwDi5ruy3sJ3ozp3hkHSPlUYcWu3+H/jj+A3K1ejjHYBJUttE9Cpg2zYUYIsUBpF923senZIFiOgzlB9LiwRbFURqtimhGLiuJVKhbTILI9aSYGgF8zHjP/l7zdtPaRhXTQ8EZlo7FTjogBu2CE1qjHrRANp6zGjj7t/F/r6Wvqcx9rV3/qMRDg/EUVecPFAFqeA3OMU4iK1548slONd8uX5iZc7wcnGj8bVYg=
