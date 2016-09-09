@@ -4,8 +4,8 @@ jdk:
 install:
   - mvn --settings deployment/maven/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 before_install:
-  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-  - echo $GPG_OWNERTRUST  | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+  - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+  - echo $GPG_OWNERTRUST  | base64 --decode | gpg --import-ownertrust
 cache:
   directories:
   - "~/.m2/repository"
