@@ -5,5 +5,5 @@ set -u
 set -e
 
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
-    mvn -X deploy -P sign,build-extras --settings $TRAVIS_BUILD_DIR/deployment/maven/settings.xml
+    mvn -X -Dgpg.passphrase=${GPG_PASSPHRASE} deploy -P sign,build-extras --settings $TRAVIS_BUILD_DIR/deployment/maven/settings.xml
 fi
