@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set +x
-set -u
 set -e
 
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
