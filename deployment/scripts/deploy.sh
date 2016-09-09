@@ -3,8 +3,12 @@
 set +x
 set -e
 
-set
-
-if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
-    mvn -X -Dgpg.passphrase=${GPG_PASSPHRASE} deploy -P sign,build-extras --settings $TRAVIS_BUILD_DIR/deployment/maven/settings.xml
+if [ ! -z "$TRAVIS_TAG" ]
+then
+    echo "Git tag detected - set Maven POM version to [$TRAVIS_TAG]"
+    mvn --settings deployment/maven/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG 1>/dev/null 2>/dev/null
+else
+    echo "No Git tag detected - keep Maven POM version untouched"
 fi
+
+mvn clean deploy --settings deployment/maven/settings.xml -DskipTests=true -B -U
