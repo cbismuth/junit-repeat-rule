@@ -64,5 +64,5 @@ public class RepeatRuleTest {
     public void testWithoutRepetition() {
         counter.addAndGet(1);
     }
-    
+
 }
