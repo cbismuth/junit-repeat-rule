@@ -6,9 +6,9 @@ set -e
 if [ ! -z "$TRAVIS_TAG" ]
 then
     echo "Git tag detected - set Maven POM version to [$TRAVIS_TAG]"
-    mvn --quiet --settings $DEPLOY_DIR/maven/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG 1>/dev/null 2>/dev/null
+    mvn --settings $DEPLOY_DIR/maven/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG 1>/dev/null 2>/dev/null
 else
     echo "No Git tag detected - keep Maven POM version untouched"
 fi
 
-mvn clean deploy -P ossrh --quiet --settings $DEPLOY_DIR/maven/settings.xml -DskipTests=true -B -U
+mvn --settings $DEPLOY_DIR/maven/settings.xml -P ossrh clean deploy -B -U
