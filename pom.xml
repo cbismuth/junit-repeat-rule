@@ -67,7 +67,7 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <jdk.version>1.6</jdk.version>
+        <jdk.version>1.5</jdk.version>
         <maven.version>3.0.4</maven.version>
 
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
