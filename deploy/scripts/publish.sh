@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set +x
 set -e
 
 if [ ! -z "$TRAVIS_TAG" ]
