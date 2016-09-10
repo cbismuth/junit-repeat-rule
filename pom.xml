@@ -79,7 +79,6 @@
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
 
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <coveralls-maven-plugin.version>4.2.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.7.7.201606060606</jacoco-maven-plugin.version>
 
