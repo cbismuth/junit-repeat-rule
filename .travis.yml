@@ -1,5 +1,7 @@
 language: java
 jdk: openjdk6
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn test jacoco:report coveralls:report -Dmaven.javadoc.skip=true -B -V
 cache:
   directories:
     - "$HOME/.m2"
