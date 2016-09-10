@@ -51,11 +51,18 @@ public class RepeatRuleTest {
         assertEquals(EXPECTED_COUNT_VALUE, actualCountValue);
     }
 
-    /** Tests the repetition rule. */
+    /** Tests the repetition rule when enabled. */
     @Test
     @Repeat(times = EXPECTED_COUNT_VALUE, threads = 4)
-    public void testRepetition() {
+    public void testWithRepetition() {
         counter.addAndGet(1);
     }
 
+    /** Tests the repetition rule when disabled. */
+    @Test
+    @Repeat(times = EXPECTED_COUNT_VALUE, threads = 4)
+    public void testWithoutRepetition() {
+        counter.addAndGet(1);
+    }
+    
 }
