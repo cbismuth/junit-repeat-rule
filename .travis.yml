@@ -6,7 +6,7 @@ cache:
   directories:
     - "$HOME/.m2"
 after_success:
-  - mvn test jacoco:report coveralls:report
+  - mvn clean -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID jacoco:report coveralls:report
   - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $DEPLOY_DIR/pubring.gpg.enc -out $DEPLOY_DIR/pubring.gpg -d
   - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $DEPLOY_DIR/secring.gpg.enc -out $DEPLOY_DIR/secring.gpg -d
   - "$DEPLOY_DIR/scripts/publish.sh"
