@@ -1,8 +1,9 @@
 # JUnit repeat rule
 
-[![Build Status](https://travis-ci.org/cbismuth/junit-repeat-rule.svg?branch=master)](https://travis-ci.org/cbismuth/junit-repeat-rule)
+[![Build status](https://travis-ci.org/cbismuth/junit-repeat-rule.svg?branch=master)](https://travis-ci.org/cbismuth/junit-repeat-rule)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cbismuth/junit-repeat-rule/master/LICENSE.md)
 [![GitHub issues](https://img.shields.io/github/issues/cbismuth/junit-repeat-rule.svg)](https://github.com/cbismuth/junit-repeat-rule/issues)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/)
 
 ## Description
 
