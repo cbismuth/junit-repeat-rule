@@ -60,9 +60,8 @@ public class RepeatRuleTest {
 
     /** Tests the repetition rule when disabled. */
     @Test
-    @Repeat(times = EXPECTED_COUNT_VALUE, threads = 4)
     public void testWithoutRepetition() {
-        counter.addAndGet(1);
+        // NOP
     }
 
 }
