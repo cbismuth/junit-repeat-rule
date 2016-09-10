@@ -66,7 +66,8 @@
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-        <argLine>-Dfile.encoding=${project.build.sourceEncoding} ${argLine}</argLine>
+
+        <argLine/>
 
         <jdk.version>1.5</jdk.version>
         <maven.version>3.0.4</maven.version>
