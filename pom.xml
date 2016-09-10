@@ -153,7 +153,7 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <configuration>
                     <outputDirectory>
-                        ${project.reporting.outputDirectory}/jacoco/jacoco.xml
+                        ${project.reporting.outputDirectory}/jacoco/
                     </outputDirectory>
                 </configuration>
                 <executions>
@@ -173,7 +173,7 @@
                 <configuration>
                     <jacocoReports>
                         <param>
-                            ${project.reporting.outputDirectory}/jacoco/jacoco.xml
+                            ${project.reporting.outputDirectory}/jacoco/
                         </param>
                     </jacocoReports>
                 </configuration>
