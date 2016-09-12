@@ -12,6 +12,18 @@ A simple JUnit repeat rule written in Java 5+ along with concurrency support.
 
 ## Usage
 
+Add the following Maven dependency to your project:
+
+```xml
+<dependency>
+    <groupId>com.github.cbismuth</groupId>
+    <artifactId>junit-repeat-rule</artifactId>
+    <version>1.1.0</version>
+</dependency>
+```
+
+Add the `RepeatRule` to your test class and annotate your test case with `@Repeat` as shown below.
+
 ```java
 /** A test class containing a repeated test case. */
 public class RepeatedTest {
