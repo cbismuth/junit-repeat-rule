@@ -1,12 +1,12 @@
 language: java
 jdk: openjdk7
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn test -P coverage -Dmaven.javadoc.skip=true -B -V
+script: mvn test jacoco:report coveralls:report -P coverage -Dmaven.javadoc.skip=true -B -V
 cache:
   directories:
     - "$HOME/.m2"
 after_success:
-  - mvn clean test jacoco:report coveralls:report -Dmaven.javadoc.skip=true -B -V
+  - mvn clean test -Dmaven.javadoc.skip=true -B -V
   - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $DEPLOY_DIR/pubring.gpg.enc -out $DEPLOY_DIR/pubring.gpg -d
   - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $DEPLOY_DIR/secring.gpg.enc -out $DEPLOY_DIR/secring.gpg -d
   - "$DEPLOY_DIR/scripts/publish.sh"
