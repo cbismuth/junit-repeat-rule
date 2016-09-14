@@ -1,10 +1,11 @@
 # JUnit repeat rule
 
-[![Build status](https://travis-ci.org/cbismuth/junit-repeat-rule.svg?branch=master)](https://travis-ci.org/cbismuth/junit-repeat-rule)
-[![Coverage status](https://coveralls.io/repos/github/cbismuth/junit-repeat-rule/badge.svg?branch=master)](https://coveralls.io/github/cbismuth/junit-repeat-rule?branch=master)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cbismuth/junit-repeat-rule/master/LICENSE.md)
-[![GitHub issues](https://img.shields.io/github/issues/cbismuth/junit-repeat-rule.svg)](https://github.com/cbismuth/junit-repeat-rule/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/)
+[![build](https://travis-ci.org/cbismuth/junit-repeat-rule.svg?branch=master)](https://travis-ci.org/cbismuth/junit-repeat-rule)
+[![coverage](https://coveralls.io/repos/github/cbismuth/junit-repeat-rule/badge.svg?branch=master)](https://coveralls.io/github/cbismuth/junit-repeat-rule?branch=master)
+[![javadoc](http://javadoc.io/badge/com.github.cbismuth/junit-repeat-rule.svg)](http://javadoc.io/doc/com.github.cbismuth/junit-repeat-rule)
+[![repository](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.cbismuth/junit-repeat-rule/)
+[![issues](https://img.shields.io/github/issues/cbismuth/junit-repeat-rule.svg)](https://github.com/cbismuth/junit-repeat-rule/issues)
+[![licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cbismuth/junit-repeat-rule/master/LICENSE.md)
 
 ## Description
 
