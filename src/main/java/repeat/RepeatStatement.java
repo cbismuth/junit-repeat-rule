@@ -26,6 +26,7 @@ package repeat;
 
 import org.junit.runners.model.Statement;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -68,13 +69,15 @@ public class RepeatStatement extends Statement {
         final ExecutorService executorService = newFixedThreadPool(threads);
 
         for (int i = 0; i < times; i++) {
-            executorService.execute(new Runnable() {
-                public void run() {
+            executorService.submit(new Callable<Void>() {
+                @Override
+                public Void call() throws Exception {
                     try {
                         statement.evaluate();
-                    } catch (final Throwable t) {
-                        throw new RuntimeException(t);
+                    } catch (final Throwable throwable) {
+                        throw new Exception(throwable);
                     }
+                    return null;
                 }
             });
         }
