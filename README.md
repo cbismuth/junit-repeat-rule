@@ -7,11 +7,11 @@
 [![issues](https://img.shields.io/github/issues/cbismuth/junit-repeat-rule.svg)](https://github.com/cbismuth/junit-repeat-rule/issues)
 [![licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cbismuth/junit-repeat-rule/master/LICENSE.md)
 
-## Description
+## Description
 
 A simple JUnit repeat rule written in Java 5+ along with concurrency support.
 
-## Usage
+## Usage
 
 Add the following Maven dependency to your project:
 
@@ -41,6 +41,6 @@ public class RepeatedTest {
 }
 ```
 
-## Credits
+## Credits
 
 Written by Christophe Bismuth, licensed under the [The MIT License (MIT)](LICENSE.md).
