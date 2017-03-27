@@ -13,7 +13,7 @@ A simple JUnit repeat rule written in Java 5+ along with concurrency support.
 
 ## Usage
 
-Add the following Maven dependency to your project:
+For Maven, add the following dependency:
 
 ```xml
 <dependency>
@@ -21,6 +21,12 @@ Add the following Maven dependency to your project:
     <artifactId>junit-repeat-rule</artifactId>
     <version>1.1.1</version>
 </dependency>
+```
+
+For Gradle, use:
+
+```gradle
+compile 'com.github.cbismuth:junit-repeat-rule:1.1.1'
 ```
 
 Add the `RepeatRule` to your test class and annotate your test case with `@Repeat` as shown below.
