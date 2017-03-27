@@ -50,3 +50,5 @@ public class RepeatedTest {
 ## Credits
 
 Written by Christophe Bismuth, licensed under the [The MIT License (MIT)](LICENSE.md).
+Original design by [Frank Appel](http://www.codeaffine.com/).
+Thanks to [Kisty](https://github.com/Kisty) for its contributions.
