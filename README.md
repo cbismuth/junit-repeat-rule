@@ -19,7 +19,7 @@ Add the following Maven dependency to your project:
 <dependency>
     <groupId>com.github.cbismuth</groupId>
     <artifactId>junit-repeat-rule</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency>
 ```
 
