@@ -26,7 +26,9 @@ package repeat;
 
 import org.junit.runners.model.Statement;
 
+import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -68,6 +70,8 @@ public class RepeatStatement extends Statement {
     public void evaluate() throws Throwable {
         final ExecutorService executorService = newFixedThreadPool(threads);
 
+        final List<Throwable> throwables = new CopyOnWriteArrayList<Throwable>();
+
         for (int i = 0; i < times; i++) {
             executorService.submit(new Callable<Void>() {
                 @Override
@@ -75,7 +79,7 @@ public class RepeatStatement extends Statement {
                     try {
                         statement.evaluate();
                     } catch (final Throwable throwable) {
-                        throw new Exception(throwable);
+                        throwables.add(throwable);
                     }
                     return null;
                 }
@@ -85,6 +89,10 @@ public class RepeatStatement extends Statement {
         executorService.shutdown();
         executorService.awaitTermination(timeout, unit);
         executorService.shutdownNow();
+
+        if (!throwables.isEmpty()) {
+            throw throwables.get(0);
+        }
     }
 
 }

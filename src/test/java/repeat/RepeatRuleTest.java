@@ -58,6 +58,13 @@ public class RepeatRuleTest {
         counter.addAndGet(1);
     }
 
+    /** Tests the repetition rule when an exception is raised. */
+    @Test(expected = IllegalArgumentException.class)
+    @Repeat(times = EXPECTED_COUNT_VALUE, threads = 4)
+    public void testWithException() {
+        throw new IllegalArgumentException();
+    }
+
     /** Tests the repetition rule when disabled. */
     @Test
     public void testWithoutRepetition() {
