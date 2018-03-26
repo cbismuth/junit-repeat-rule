@@ -19,14 +19,14 @@ For Maven, add the following dependency:
 <dependency>
     <groupId>com.github.cbismuth</groupId>
     <artifactId>junit-repeat-rule</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
 For Gradle, use:
 
 ```gradle
-compile 'com.github.cbismuth:junit-repeat-rule:1.1.1'
+compile 'com.github.cbismuth:junit-repeat-rule:1.1.2'
 ```
 
 Add the `RepeatRule` to your test class and annotate your test case with `@Repeat` as shown below.
